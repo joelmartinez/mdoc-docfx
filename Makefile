@@ -30,10 +30,10 @@ content:
 serve: restore
 	$(DOCFX.EXE) content/docfx.json -o out/site --serve
 
-publish: docfx
+preview: docfx
 	$(DOCFX.EXE) content/docfx.json -o out/site
 
-.PHONY: ecma2yaml mdoc clean publish
+.PHONY: ecma2yaml mdoc clean preview
 
 clean:
 	rm -rf packages

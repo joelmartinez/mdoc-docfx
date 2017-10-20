@@ -1,0 +1,6 @@
+packages
+*.dll
+docs
+XmlYamlMapping.json
+content/api
+out

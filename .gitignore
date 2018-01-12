@@ -1,6 +1,8 @@
-packages
+Packages
 *.dll
 docs
 XmlYamlMapping.json
 content/api
 out
+bin
+obj

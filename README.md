@@ -6,7 +6,7 @@ After fetching this repository, in a terminal that has `msbuild` on the path, ru
 msbuild docs.proj
 ```
 
-This will compile the sample project, update the _EcmaXML_ using _mdoc_ in the `docs` folder, and then initialize the documentation website using _docfx_ in the `content` folder, and the ready-to-publish HTML content can be found in teh `out/site/_site` folder.
+This will compile the sample project, update the _EcmaXML_ using _mdoc_ in the `docs` folder, and then initialize the documentation website using _docfx_ in the `content` folder, and the ready-to-publish HTML content can be found in the `out/site/_site` folder.
 
 If you want to preview it locally, you can run 
 

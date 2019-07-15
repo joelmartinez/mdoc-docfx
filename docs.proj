@@ -10,6 +10,7 @@
         <DOCFX_EXE>$([System.IO.Path]::Combine('Packages','docfx.console.2.30.0','tools','docfx.exe'))</DOCFX_EXE>
         <Docs_Outpath>content</Docs_Outpath>
         <DocFx_Path>$([System.IO.Path]::Combine($(Docs_Outpath),'docfx.json'))</DocFx_Path>
+        <DocFx_Serve_Command>$(DOCFX_EXE) $(DocFx_Path) -o $(Docs_PublishPath) --serve</DocFx_Serve_Command>
       <Docs_AssemblyPath>$([System.IO.Path]::Combine('src','bin','samplecode.dll'))</Docs_AssemblyPath>
       <Docs_PublishPath>$([System.IO.Path]::Combine('out','site'))</Docs_PublishPath>
     </PropertyGroup>
@@ -37,6 +38,7 @@
         <Exec Command="$(DOCFX_EXE) $(DocFx_Path) -o $(Docs_PublishPath)" />
     </Target>
     <Target Name="Docs_Serve" DependsOnTargets="Docs_Api">
-        <Exec Command="$(DOCFX_EXE) $(DocFx_Path) -o $(Docs_PublishPath) --serve" />
+        <Message Text="$(DocFx_Serve_Command)" />
+        <Exec Command="$(DocFx_Serve_Command)" />
     </Target>
   </Project>

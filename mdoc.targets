@@ -10,8 +10,9 @@
         <DocFxE2YPath>$([System.IO.Path]::Combine('$(NuGetPackageRoot)','Microsoft.DocAsCode.ECMA2Yaml', '$(DocfxE2YVersion)','tools','ECMA2Yaml.exe'))</DocFxE2YPath>
         <DocfxPath>$([System.IO.Path]::Combine('$(NuGetPackageRoot)','docfx.console','$(DocfxVersion)','tools','docfx.exe'))</DocfxPath>
 
-        <Docs_PublishPath Condition=" '$(Docs_PublishPath)' == '' ">$([System.IO.Path]::Combine('out','site'))</Docs_PublishPath>
-        <Docs_Outpath Condition=" '$(Docs_Outpath)' == '' ">content</Docs_Outpath>
+        <DocfxRelativePath Condition=" '$(DocfxRelativePath)' == '' "></DocfxRelativePath>
+        <Docs_PublishPath Condition=" '$(Docs_PublishPath)' == '' ">$([System.IO.Path]::Combine('$(DocfxRelativePath)','out','site'))</Docs_PublishPath>
+        <Docs_Outpath Condition=" '$(Docs_Outpath)' == '' ">$(DocfxRelativePath)content</Docs_Outpath>
 
         <DocfxConfigPath>$([System.IO.Path]::Combine($(Docs_Outpath),'docfx.json'))</DocfxConfigPath>
         <DocFx_Serve_Command>$(DocfxPath) $(DocfxConfigPath) -o $(Docs_PublishPath) --serve</DocFx_Serve_Command>
@@ -32,6 +33,7 @@
     </ItemGroup>
 
     <Target Name="Docs_Api" DependsOnTargets="restore;Build;Docs_Init">
+        <Message Text="Output At: $(OutputPath)" Importance="high"/>
         <Exec Command="$(DocFxMdocPath) update %(OutFiles.Identity) -out docs --debug" />
         <Exec Command="$(DocFxE2YPath) --source=docs --output=$(Docs_Outpath)/api" />
     </Target>

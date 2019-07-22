@@ -4,15 +4,15 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
 
-    <Docs_PublishPath>$([System.IO.Path]::Combine('..','out','site'))</Docs_PublishPath>
-    <Docs_Outpath>$([System.IO.Path]::Combine('..','content'))</Docs_Outpath>
-    <DocfxConfigFile>$(DocfxConfigPath)</DocfxConfigFile>
+    <DocfxRelativePath>../</DocfxRelativePath>
+
+    <!--<DocfxConfigFile>$(DocfxConfigPath)</DocfxConfigFile>-->
 
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="samplecode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  
-  <Import Project="$(MSBuildProjectDirectory)/../docs.targets" />
+
+  <Import Project="$(MSBuildProjectDirectory)/../mdoc.targets" />
 </Project>
